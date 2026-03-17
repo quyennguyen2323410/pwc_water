@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PWC WaterCare AI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <button class="icon-button mobile-only sidebar-close" id="sidebarClose" type="button" aria-label="Đóng menu điều hướng">✕</button>
+      <div class="brand">
+        <div class="brand-mark">PW</div>
+        <div>
+          <h1>PWC WaterCare AI</h1>
+          <p>Nền tảng vận hành kỹ thuật ngành nước</p>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#dashboard" class="active">Tổng quan</a>
+        <a href="#library">Thư viện kỹ thuật</a>
+        <a href="#qna">Hỏi đáp nội bộ</a>
+        <a href="#tasks">Giao việc</a>
+        <a href="#meter">Chốt số đồng hồ</a>
+        <a href="#improvement">Nâng cấp quy trình</a>
+        <a href="#ideas">Sáng kiến</a>
+        <a href="#assistant">Trợ lý AI</a>
+      </nav>
+
+      <div class="sidebar-panel">
+        <p class="eyebrow">Triết lý cốt lõi</p>
+        <strong>“Một người giỏi chia sẻ – cả đội ngũ cùng phát triển.”</strong>
+      </div>
+
+      <div class="sidebar-panel status-panel">
+        <p class="eyebrow">Trạng thái demo</p>
+        <div class="status-item">
+          <span>Kho tri thức</span>
+          <strong id="statusDevices">0</strong>
+        </div>
+        <div class="status-item">
+          <span>Câu hỏi mở</span>
+          <strong id="statusOpenQuestions">0</strong>
+        </div>
+        <div class="status-item">
+          <span>Công việc đang chạy</span>
+          <strong id="statusActiveTasks">0</strong>
+        </div>
+      </div>
+    </aside>
+
+    <button id="sidebarBackdrop" class="sidebar-backdrop" type="button" aria-label="Đóng menu"></button>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-title-group">
+          <button class="icon-button mobile-only" id="sidebarToggle" type="button" aria-label="Mở menu điều hướng">☰</button>
+          <div>
+            <p class="eyebrow">Enterprise Web Prototype</p>
+            <h2>Quản lý tri thức – vận hành – AI trên một nền tảng duy nhất</h2>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <label class="inline-field compact">
+            <span>Vai trò demo</span>
+            <select id="roleSelector">
+              <option>Kỹ thuật viên</option>
+              <option>Tổ trưởng</option>
+              <option>Giám sát</option>
+              <option>Quản trị hệ thống</option>
+            </select>
+          </label>
+          <button class="ghost-button" id="seedButton">Khôi phục dữ liệu mẫu</button>
+        </div>
+      </header>
+
+      <section id="dashboard" class="section hero-section">
+        <div class="hero-card">
+          <div>
+            <p class="eyebrow">Tầm nhìn</p>
+            <h3>Chuẩn hóa quy trình – tích lũy dữ liệu – nâng tầm vận hành bằng AI</h3>
+            <p>
+              Website mẫu này mô phỏng các luồng nghiệp vụ chính của PWC WaterCare AI: tra cứu thiết bị,
+              hỏi đáp kỹ thuật, giao việc, chốt số đồng hồ, quản lý sáng kiến và trợ lý AI hỗ trợ quyết định.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-button" href="#assistant">Dùng trợ lý AI</a>
+              <a class="secondary-button" href="#library">Xem thư viện kỹ thuật</a>
+            </div>
+          </div>
+          <div class="hero-highlight">
+            <div class="highlight-stat">
+              <span>Tiết kiệm thời gian tra cứu</span>
+              <strong>30–50%</strong>
+            </div>
+            <div class="highlight-stat">
+              <span>Chuẩn hóa thao tác hiện trường</span>
+              <strong>100%</strong>
+            </div>
+            <div class="highlight-stat">
+              <span>Nền tảng dữ liệu cho AI</span>
+              <strong>Liên tục</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-grid" id="kpiGrid"></div>
+      </section>
+
+      <section class="section two-column-grid">
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Ghi nhận & khen thưởng</p>
+              <h3>Bảng xếp hạng đóng góp</h3>
+            </div>
+          </div>
+          <div id="leaderboardList" class="stack-list"></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">Thông báo nội bộ</p>
+              <h3>Việc cần ưu tiên</h3>
+            </div>
+          </div>
+          <div id="notificationList" class="stack-list"></div>
+        </div>
+      </section>
+
+      <section id="library" class="section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Module 01</p>
+            <h3>Thư viện kỹ thuật theo phân loại thiết bị</h3>
+          </div>
+          <p>
+            Tra cứu theo nhóm thiết bị, hãng sản xuất, lỗi thường gặp, advanced troubleshooting,
+            quy trình sửa chữa và tài liệu thực tế.
+          </p>
+        </div>
+
+        <div class="panel">
+          <div class="filter-bar">
+            <label class="inline-field">
+              <span>Tìm kiếm</span>
+              <input id="librarySearch" type="text" placeholder="Nhập thiết bị, hãng, lỗi hoặc quy trình..." />
+            </label>
+            <label class="inline-field compact">
+              <span>Nhóm thiết bị</span>
+              <select id="libraryCategory"></select>
+            </label>
+            <label class="inline-field compact">
+              <span>Hãng</span>
+              <select id="libraryBrand"></select>
+            </label>
+          </div>
+          <div class="card-grid" id="libraryGrid"></div>
+        </div>
+
+        <div class="panel detail-panel hidden" id="deviceDetailPanel">
+          <div class="detail-header">
+            <div>
+              <p class="eyebrow">Chi tiết thiết bị</p>
+              <h3 id="deviceDetailName">-</h3>
+              <p id="deviceDetailMeta">-</p>
+            </div>
+            <button class="ghost-button" id="closeDeviceDetail">Đóng</button>
+          </div>
+          <div class="detail-tabs" id="deviceDetailTabs"></div>
+          <div id="deviceDetailContent"></div>
+        </div>
+      </section>
+
+      <section id="qna" class="section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Module 02</p>
+            <h3>Hệ thống hỏi – đáp kỹ thuật nội bộ</h3>
+          </div>
+          <p>Toàn đội ngũ cùng trả lời, đánh giá hiệu quả và lưu lại lịch sử xử lý thành tài sản tri thức.</p>
+        </div>
+
+        <div class="split-layout">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Tạo câu hỏi mới</p>
+                <h3>Báo sự cố / cần tham vấn kỹ thuật</h3>
+              </div>
+            </div>
+            <form id="questionForm" class="form-grid">
+              <label class="inline-field">
+                <span>Tiêu đề</span>
+                <input type="text" name="title" placeholder="Ví dụ: Van giảm áp Bermad tụt áp sau khi vệ sinh" required />
+              </label>
+              <label class="inline-field compact">
+                <span>Thiết bị liên quan</span>
+                <select name="deviceId" id="questionDeviceSelect"></select>
+              </label>
+              <label class="inline-field full-width">
+                <span>Mô tả hiện trạng</span>
+                <textarea name="body" rows="4" placeholder="Mô tả triệu chứng, DMA, thời gian, thao tác đã thử..." required></textarea>
+              </label>
+              <div class="form-actions full-width">
+                <button type="submit" class="primary-button">Đăng câu hỏi</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Danh sách trao đổi</p>
+                <h3>Câu hỏi đang theo dõi</h3>
+              </div>
+            </div>
+            <div id="questionList" class="stack-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tasks" class="section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Module 03</p>
+            <h3>Giao việc – giám sát – xác nhận hoàn thành</h3>
+          </div>
+          <p>Minh bạch trách nhiệm, lưu thời gian thực hiện và hình thành hồ sơ công việc số.</p>
+        </div>
+
+        <div class="split-layout">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Tạo công việc</p>
+                <h3>Phân công hiện trường</h3>
+              </div>
+            </div>
+            <form id="taskForm" class="form-grid">
+              <label class="inline-field">
+                <span>Tên công việc</span>
+                <input name="title" type="text" placeholder="Kiểm tra áp lực DMA Trung Tâm" required />
+              </label>
+              <label class="inline-field compact">
+                <span>Người thực hiện</span>
+                <input name="assignee" type="text" placeholder="Nguyễn Văn A" required />
+              </label>
+              <label class="inline-field compact">
+                <span>Giám sát</span>
+                <input name="supervisor" type="text" placeholder="Trần Văn B" required />
+              </label>
+              <label class="inline-field compact">
+                <span>Khu vực / DMA</span>
+                <input name="location" type="text" placeholder="DMA Phú Hòa" required />
+              </label>
+              <label class="inline-field compact">
+                <span>Hạn hoàn thành</span>
+                <input name="dueDate" type="date" required />
+              </label>
+              <label class="inline-field full-width">
+                <span>Các bước công việc (mỗi dòng 1 bước)</span>
+                <textarea name="steps" rows="4" placeholder="Khảo sát hiện trường&#10;Đo áp lực đầu vào/đầu ra&#10;Chụp ảnh xác nhận"></textarea>
+              </label>
+              <div class="form-actions full-width">
+                <button type="submit" class="primary-button">Tạo công việc</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Kanban</p>
+                <h3>Theo dõi tiến độ</h3>
+              </div>
+            </div>
+            <div class="kanban-board" id="taskBoard"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="meter" class="section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Module 04</p>
+            <h3>Chuẩn hóa chốt số đồng hồ & báo cáo hiện trường</h3>
+          </div>
+          <p>
+            Tạo khung báo cáo chuẩn, hướng dẫn tuần tự bắt buộc, mô phỏng OCR đọc chỉ số và lưu lịch sử đồng bộ.
+          </p>
+        </div>
+
+        <div class="split-layout">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Tạo báo cáo</p>
+                <h3>Chốt số đồng hồ</h3>
+              </div>
+            </div>
+            <form id="meterForm" class="form-grid">
+              <label class="inline-field compact">
+                <span>Tên DMA</span>
+                <input name="dma" type="text" placeholder="DMA Trung Tâm" required />
+              </label>
+              <label class="inline-field compact">
+                <span>Vị trí đồng hồ</span>
+                <input name="location" type="text" placeholder="Hố van số 03" required />
+              </label>
+              <label class="inline-field compact">
+                <span>Chỉ số kỳ trước</span>
+                <input name="previous" type="number" min="0" placeholder="180120" required />
+              </label>
+              <label class="inline-field compact">
+                <span>Ảnh đồng hồ</span>
+                <input id="meterPhoto" name="photo" type="file" accept="image/*" />
+              </label>
+              <label class="inline-field full-width">
+                <span>OCR mô phỏng / văn bản nhận dạng</span>
+                <input id="ocrSource" type="text" placeholder="Ví dụ: Dong ho DMA 182334" />
+              </label>
+              <div class="meter-ocr-box full-width">
+                <div>
+                  <p class="eyebrow">AI OCR demo</p>
+                  <strong id="ocrResult">Chưa nhận dạng</strong>
+                </div>
+                <button type="button" class="ghost-button" id="runOcrButton">Tự điền chỉ số</button>
+              </div>
+              <label class="inline-field compact">
+                <span>Chỉ số hiện tại</span>
+                <input id="currentReading" name="current" type="number" min="0" placeholder="Hệ thống sẽ tự điền" required />
+              </label>
+              <label class="inline-field full-width">
+                <span>Ghi chú hiện trường</span>
+                <textarea name="notes" rows="3" placeholder="Mô tả tình trạng buồng đồng hồ, niêm chì, rò rỉ, vệ sinh mặt số..."></textarea>
+              </label>
+              <fieldset class="checklist-box full-width">
+                <legend>Checklist bắt buộc</legend>
+                <label><input type="checkbox" name="captureOrder" checked /> Ảnh chụp đúng thứ tự chuẩn</label>
+                <label><input type="checkbox" name="focusConfirmed" checked /> Ảnh rõ nét và thấy đủ mặt số</label>
+                <label><input type="checkbox" name="locationConfirmed" checked /> Đúng vị trí DMA / đồng hồ</label>
+                <label><input type="checkbox" name="safetyConfirmed" checked /> Đã thực hiện an toàn hiện trường</label>
+              </fieldset>
+              <div class="form-actions full-width">
+                <button type="submit" class="primary-button">Lưu báo cáo</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Lịch sử</p>
+                <h3>Báo cáo gần đây</h3>
+              </div>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>DMA</th>
+                    <th>Chỉ số</th>
+                    <th>Biến động</th>
+                    <th>Ảnh</th>
+                    <th>Thời gian</th>
+                  </tr>
+                </thead>
+                <tbody id="meterTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="improvement" class="section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Module 05</p>
+            <h3>Cơ chế nâng cấp quy trình</h3>
+          </div>
+          <p>Câu hỏi chưa có lời giải sẽ được nghiên cứu; phương án hiệu quả sẽ được chuẩn hóa thành SOP nội bộ.</p>
+        </div>
+
+        <div class="panel">
+          <div id="workflowUpgradeList" class="card-grid compact-grid"></div>
+        </div>
+      </section>
+
+      <section id="ideas" class="section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Module 06</p>
+            <h3>Đề xuất sáng kiến & cải tiến</h3>
+          </div>
+          <p>Thu thập ý tưởng từ thực tế hiện trường, đánh giá, thảo luận và chuyển thành sáng kiến có thể triển khai.</p>
+        </div>
+
+        <div class="split-layout">
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Gửi sáng kiến</p>
+                <h3>Đề xuất cải tiến mới</h3>
+              </div>
+            </div>
+            <form id="ideaForm" class="form-grid">
+              <label class="inline-field">
+                <span>Tên sáng kiến</span>
+                <input name="title" type="text" placeholder="Chuẩn hóa ảnh chụp đồng hồ theo khung AI" required />
+              </label>
+              <label class="inline-field compact">
+                <span>Tác giả</span>
+                <input name="author" type="text" placeholder="Lê Văn C" required />
+              </label>
+              <label class="inline-field compact">
+                <span>Mức độ tác động</span>
+                <select name="impact">
+                  <option value="low">Thấp</option>
+                  <option value="medium" selected>Trung bình</option>
+                  <option value="high">Cao</option>
+                </select>
+              </label>
+              <label class="inline-field full-width">
+                <span>Mô tả</span>
+                <textarea name="description" rows="4" placeholder="Mô tả bài toán, cách làm, lợi ích kỳ vọng..." required></textarea>
+              </label>
+              <div class="form-actions full-width">
+                <button type="submit" class="primary-button">Gửi sáng kiến</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Danh sách sáng kiến</p>
+                <h3>Đang xem xét / đã triển khai</h3>
+              </div>
+            </div>
+            <div id="ideaList" class="stack-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="assistant" class="section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Module 07</p>
+            <h3>Trợ lý kỹ thuật AI</h3>
+          </div>
+          <p>
+            Demo trợ lý AI theo hướng RAG nội bộ: tìm trong thư viện thiết bị, lịch sử hỏi đáp, quy trình và gợi ý hướng xử lý.
+          </p>
+        </div>
+
+        <div class="panel assistant-panel">
+          <div class="assistant-quick-actions">
+            <button class="quick-chip" data-query="Van giảm áp Bermad tụt áp sau bảo dưỡng">Van giảm áp tụt áp</button>
+            <button class="quick-chip" data-query="Cách cài data logger khi mất kết nối">Data logger mất kết nối</button>
+            <button class="quick-chip" data-query="Quy trình chốt số đồng hồ DMA">Quy trình chốt số</button>
+            <button class="quick-chip" data-query="Có sáng kiến nào giúp chuẩn hóa ảnh chụp đồng hồ không">Xem sáng kiến OCR</button>
+          </div>
+          <div id="assistantConversation" class="assistant-conversation"></div>
+          <form id="assistantForm" class="assistant-form">
+            <input id="assistantInput" type="text" placeholder="Hỏi về sự cố, quy trình, thiết bị, DMA, giao việc..." required />
+            <button type="submit" class="primary-button">Hỏi AI</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="questionModal" class="modal hidden">
+    <div class="modal-card large">
+      <div class="modal-header">
+        <div>
+          <p class="eyebrow">Trao đổi kỹ thuật</p>
+          <h3 id="questionModalTitle">-</h3>
+          <p id="questionModalMeta">-</p>
+        </div>
+        <button class="ghost-button" id="closeQuestionModal">Đóng</button>
+      </div>
+      <div class="modal-content">
+        <div id="questionModalBody"></div>
+        <div>
+          <h4>Phản hồi</h4>
+          <div id="questionAnswerList" class="stack-list"></div>
+          <form id="answerForm" class="form-grid spaced-top">
+            <input type="hidden" name="questionId" />
+            <label class="inline-field compact">
+              <span>Người trả lời</span>
+              <input name="author" type="text" placeholder="Nguyễn Văn B" required />
+            </label>
+            <label class="inline-field compact">
+              <span>Hiệu quả dự kiến</span>
+              <select name="stars">
+                <option value="5">5 sao</option>
+                <option value="4">4 sao</option>
+                <option value="3">3 sao</option>
+                <option value="2">2 sao</option>
+                <option value="1">1 sao</option>
+              </select>
+            </label>
+            <label class="inline-field full-width">
+              <span>Nội dung trả lời</span>
+              <textarea name="body" rows="4" placeholder="Nêu rõ nguyên nhân, cách kiểm tra và phương án xử lý..." required></textarea>
+            </label>
+            <div class="form-actions full-width">
+              <button type="submit" class="primary-button">Gửi phản hồi</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <template id="notificationTemplate">
+    <article class="list-card notification-card">
+      <div>
+        <h4></h4>
+        <p></p>
+      </div>
+      <span class="pill"></span>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
